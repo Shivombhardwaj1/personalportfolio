@@ -1,10 +1,12 @@
 import React from 'react';
 import './Footer.css';
-import logo from './images/logo.png'; // Replace with your actual logo path
+import logo from './images/logo.png';
 
 const Footer = () => (
   <footer className="simple-footer">
-    <p>Made by @Shivombhardwaj</p>
+    <a href="https://www.linkedin.com/in/shiv-om-bhardwaj-31qwq/" style={{ color: 'white', textDecoration: 'none' }}>
+      <p>Made by @Shivombhardwaj</p>
+    </a>
     <img src={logo} alt="Shiv Om Bhardwaj Logo" className="footer-logo" />
   </footer>
 );

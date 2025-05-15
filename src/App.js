@@ -10,13 +10,19 @@ import logo from './components/images/logo.png';
 
 function App() {
   const [showTopBtn, setShowTopBtn] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setShowTopBtn(window.scrollY > 300);
+    const updateProgress = () => {
+      const scrollTop = window.scrollY;
+      const docHeight = document.body.scrollHeight - window.innerHeight;
+      const progress = (scrollTop / docHeight) * 100;
+      setScrollProgress(progress);
+      setShowTopBtn(scrollTop > 300);
     };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    window.addEventListener('scroll', updateProgress);
+    return () => window.removeEventListener('scroll', updateProgress);
   }, []);
 
   const scrollToTop = () => {
@@ -25,15 +31,29 @@ function App() {
 
   return (
     <div className="portfolio" style={{ overflowX: 'hidden' }}>
-      <header className="header">
+
+      {/* Fixed Header */}
+      <header
+        className="header"
+        style={{
+          position: 'fixed',
+          top: 0,
+          left: 0,
+          width: '100%',
+          backgroundColor: '#111',
+          color: 'white',
+          zIndex: 1000,
+          boxShadow: '0 2px 5px rgba(0,0,0,0.3)',
+        }}
+      >
         <nav
           style={{
             display: 'flex',
             alignItems: 'center',
             justifyContent: 'space-between',
-            padding: '0 20px',
-            width: '80%',
-            marginLeft: '100px',
+            padding: '10px 20px',
+            maxWidth: '1000px',
+            margin: '0 auto',
           }}
         >
           <img
@@ -68,7 +88,22 @@ function App() {
         </nav>
       </header>
 
-      <main>
+      {/* Scroll Progress Bar BELOW Fixed Header */}
+      <div
+        style={{
+          position: 'fixed',
+          top: '100px', // Adjust depending on header height (40px + padding)
+          left: 0,
+          height: '4px',
+          width: `${scrollProgress}%`,
+          backgroundColor: '#1abc9c',
+          transition: 'width 0.25s ease-out',
+          zIndex: 1001,
+        }}
+      ></div>
+
+      {/* Add top padding to main content so content is not hidden behind fixed header */}
+      <main style={{ paddingTop: '70px' }}>
         <Home />
         <About />
         <Projects />
@@ -77,12 +112,13 @@ function App() {
         <Footer />
       </main>
 
+      {/* Scroll to Top Button */}
       {showTopBtn && (
         <button
           onClick={scrollToTop}
           style={{
             position: 'fixed',
-            bottom: '30px',
+            bottom: '70px',
             right: '30px',
             padding: '12px 16px',
             fontSize: '20px',
@@ -92,10 +128,8 @@ function App() {
             border: 'none',
             boxShadow: '0 0 15px #1abc9c',
             cursor: 'pointer',
-            opacity: showTopBtn ? 1 : 0,
             transition: 'opacity 0.4s ease',
             zIndex: 999,
-            bottom: '70px'
           }}
         >
           ↑
