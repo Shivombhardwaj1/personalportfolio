@@ -32,7 +32,6 @@ function App() {
   return (
     <div className="portfolio" style={{ overflowX: 'hidden' }}>
 
-      {/* Fixed Header */}
       <header
         className="header"
         style={{
@@ -88,11 +87,10 @@ function App() {
         </nav>
       </header>
 
-      {/* Scroll Progress Bar BELOW Fixed Header */}
       <div
         style={{
           position: 'fixed',
-          top: '100px', // Adjust depending on header height (40px + padding)
+          top: '100px',
           left: 0,
           height: '4px',
           width: `${scrollProgress}%`,
@@ -102,7 +100,6 @@ function App() {
         }}
       ></div>
 
-      {/* Add top padding to main content so content is not hidden behind fixed header */}
       <main style={{ paddingTop: '70px' }}>
         <Home />
         <About />
@@ -112,7 +109,7 @@ function App() {
         <Footer />
       </main>
 
-      {/* Scroll to Top Button */}
+
       {showTopBtn && (
         <button
           onClick={scrollToTop}
@@ -139,4 +136,4 @@ function App() {
   );
 }
 
-export default App;
+export default App

@@ -13,10 +13,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        'service_z5upt9c',   // your EmailJS service ID
-        'template_6zg7s3r',  // your EmailJS template ID
+        'service_z5upt9c',   
+        'template_6zg7s3r',  
         form.current,
-        'x8moyuBvUHvc18RcD' // your EmailJS user/public key
+        'x8moyuBvUHvc18RcD' 
       )
       .then(() => {
         toast.success('Message sent successfully!');
@@ -31,7 +31,6 @@ const Contact = () => {
     <section id="contact" className="contact-section">
       <h2>Contact Me</h2>
       <div className="contact-wrapper">
-        {/* Left Side */}
         <div className="contact-left">
           <p><strong>Email:</strong> shivombhardwaj3156@gmail.com</p>
           <p><strong>Phone:</strong> +91 9816825316</p>
@@ -54,7 +53,6 @@ const Contact = () => {
           </a>
         </div>
 
-        {/* Right Side */}
         <form className="contact-form" ref={form} onSubmit={sendEmail}>
           <div className="form-group">
             <label htmlFor="name">Name</label>
@@ -75,7 +73,6 @@ const Contact = () => {
         </form>
       </div>
 
-      {/* Toast container */}
       <ToastContainer
         position="bottom-center"
         autoClose={4000}

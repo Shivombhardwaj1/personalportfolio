@@ -1,5 +1,5 @@
 import React from 'react';
-import './Experience.css'; // Make sure to style appropriately
+import './Experience.css'; 
 
 const Experience = () => (
   <section id="experience">
