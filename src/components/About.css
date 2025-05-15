@@ -1,0 +1,145 @@
+/* Root black & white theme */
+:root {
+  --bg-color: #121212;
+  --text-color: #f0f0f0;
+  --accent-color: #ffffff;
+  --highlight-color: #1abc9c;
+  --button-bg: #222222;
+  --button-active-bg: var(--highlight-color);
+  --button-text: #ccc;
+}
+
+.about-section {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  padding: 30px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  min-height: 400px;
+}
+
+.about-container {
+  max-width: 900px;
+  margin: 0 auto;
+  display: flex;
+  gap: 40px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.about-image img {
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 5px solid var(--highlight-color);
+  box-shadow: 0 0 15px var(--highlight-color);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.about-image img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 25px var(--highlight-color);
+}
+
+.about-content {
+  flex: 1;
+  min-width: 280px;
+}
+
+.tabs {
+  display: flex;
+  justify-content: flex-start;
+  gap: 15px;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.tab-button {
+  background-color: var(--button-bg);
+  border: none;
+  color: var(--button-text);
+  padding: 10px 18px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  user-select: none;
+  box-shadow: 0 0 10px transparent;
+}
+
+.tab-button:hover {
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 15px var(--highlight-color);
+}
+
+.tab-button.active {
+  background-color: var(--highlight-color);
+  color: var(--bg-color);
+  box-shadow: 0 0 20px var(--highlight-color);
+}
+
+.tab-content {
+  background-color: #1a1a1a;
+  border-radius: 12px;
+  padding: 25px;
+  box-shadow: 0 0 20px rgba(255 255 255 / 0.05);
+  color: var(--text-color);
+  font-size: 1.1rem;
+  line-height: 1.6;
+  min-height: 150px;
+  transition: opacity 0.3s ease;
+}
+
+.tab-content ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin: 0;
+}
+
+.tab-content ul li {
+  margin-bottom: 8px;
+}
+
+.skills-horizontal-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.skill-row {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.skill-row h4 {
+  margin: 0;
+  font-size: 1rem;
+  color: var(--highlight-color);
+}
+
+.skill-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-left: 5px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  background-color: #1a1a1a;
+  padding: 6px 10px;
+  border-radius: 6px;
+  font-size: 0.85rem;
+  color: #fff;
+  box-shadow: 0 0 4px rgba(255, 255, 255, 0.08);
+  transition: transform 0.2s ease;
+}
+
+.skill-item:hover {
+  transform: scale(1.05);
+}
