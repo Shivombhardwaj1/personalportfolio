@@ -4,10 +4,15 @@
   --radius: 1.25rem;
 }
 
+
 .experience-section {
   padding: 5rem 1.5rem;
   transition: var(--transition-medium);
   font-family: 'Poppins', sans-serif;
+  
+  max-width: 900px;        
+  margin-left: auto;     
+  margin-right: auto;   
 }
 
 .experience-title {
