@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import {
-  SiCplusplus, SiPython, SiJavascript, SiTypescript, SiMysql, SiHtml5,
+  SiCplusplus,  SiJavascript, SiTypescript, SiMysql, SiHtml5,
   SiCss3, SiAngular, SiReact, SiNodedotjs, SiMongodb, SiGit, SiPostman,
-   SiCircleci, SiDatabricks
+  SiCircleci, SiDatabricks
 } from 'react-icons/si';
 import './About.css';
-import img from './images/pic.jpg'; 
+import img from './images/pic.jpg';
 
 const About = () => {
   const [activeTab, setActiveTab] = useState('skills');
@@ -54,11 +54,10 @@ const About = () => {
         <div className="skill-row">
           <h4>Programming & Tools</h4>
           <div className="skill-items">
-             <div className="skill-item"><SiCplusplus /> C++</div>
-            <div className="skill-item"><SiPython /> Python</div>
+            <div className="skill-item"><SiCplusplus /> C++</div>
             <div className="skill-item"><SiGit /> Git</div>
             <div className="skill-item"><SiPostman /> Postman</div>
-            <div className="skill-item">< SiDatabricks/> VS Code</div>
+            <div className="skill-item">< SiDatabricks /> VS Code</div>
           </div>
         </div>
 
@@ -77,11 +76,11 @@ const About = () => {
     <section id="about" className="about-section">
       <div className="about-container">
         <div className="about-image">
-          <img src={img}  alt="Profile" />
+          <img src={img} alt="Profile" />
         </div>
 
         <div className="about-content">
-          <h2 className="section-title">About Me</h2>
+          <h2 className="section-title">ABOUT ME</h2>
           <p>
             I'm a passionate web developer focused on building sleek and responsive websites.
             I enjoy working with React,Angular,Node, JavaScript, and CSS to create elegant user experiences.

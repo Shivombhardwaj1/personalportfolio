@@ -10,6 +10,8 @@ function Projects() {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
             entry.target.classList.add('animate');
+          } else {
+            entry.target.classList.remove('animate');  // remove when out of view
           }
         });
       },
@@ -23,6 +25,7 @@ function Projects() {
     return () => observer.disconnect();
   }, []);
 
+
   const projects = [
     {
       title: "E-Commerce Site",
@@ -31,7 +34,7 @@ function Projects() {
     },
     {
       title: "Chat Application",
-      description: "React app for Chatting",
+      description: "React app for Chatting application where user can chat with eachother.",
       image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=600&q=80"
     },
     {
@@ -44,13 +47,14 @@ function Projects() {
 
   return (
     <section id="projects">
-      <h2>Projects</h2>
+      <h2>PROJECTS</h2>
       <div className="projects-container">
         {projects.map((proj, index) => (
           <div
             className="project-card"
             key={index}
             ref={el => (cardsRef.current[index] = el)}
+            data-index={index}
             style={{ backgroundImage: `url(${proj.image})` }}
           >
             <div className="project-overlay">
@@ -59,6 +63,7 @@ function Projects() {
             </div>
           </div>
         ))}
+
       </div>
     </section>
   );

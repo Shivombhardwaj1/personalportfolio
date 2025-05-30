@@ -5,12 +5,19 @@ import Projects from './components/Projects';
 import Experience from './components/Experience';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
-import './components/Portfolio.css';
+import './App.css';
+
 import logo from './components/images/logo.png';
 
 function App() {
   const [showTopBtn, setShowTopBtn] = useState(false);
   const [scrollProgress, setScrollProgress] = useState(0);
+  const [theme, setTheme] = useState("dark");
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+  }, [theme]);
 
   useEffect(() => {
     const updateProgress = () => {
@@ -29,75 +36,75 @@ function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  const toggleTheme = () => {
+    setTheme(prev => (prev === "dark" ? "light" : "dark"));
+  };
+
   return (
     <div className="portfolio" style={{ overflowX: 'hidden' }}>
-
       <header
         className="header"
         style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100%',
-          backgroundColor: '#111',
-          color: 'white',
-          zIndex: 1000,
-          boxShadow: '0 2px 5px rgba(0,0,0,0.3)',
+          backgroundColor: theme === "dark" ? '#111' : '#f0f0f0',
+          color: theme === "dark" ? 'white' : 'black',
         }}
       >
-        <nav
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            padding: '10px 20px',
-            maxWidth: '1000px',
-            margin: '0 auto',
-          }}
-        >
+        <nav>
           <img
             src={logo}
             alt="Shiv Om Bhardwaj Logo"
+            className="logo-img"
             style={{
-              width: '40px',
-              height: '40px',
-              borderRadius: '50%',
-              border: '2px solid #1abc9c',
-              boxShadow: '0 0 5px #1abc9c',
+              borderColor: theme === "dark" ? '#1abc9c' : '#006644',
+              boxShadow: theme === "dark" ? '0 0 5px #1abc9c' : '0 0 5px #006644',
             }}
           />
-          <div>
+
+          {/* Dark mode toggle on mobile - shown on mobile and desktop but styled later */}
+          <button
+            onClick={toggleTheme}
+            aria-label="Toggle dark/light mode"
+            className="theme-toggle mobile-left"
+            title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+          >
+            {theme === "dark" ? '☀️' : '🌙'}
+          </button>
+
+          <button
+            onClick={() => setMenuOpen(!menuOpen)}
+            className="hamburger-btn"
+            aria-label="Toggle menu"
+          >
+            ☰
+          </button>
+
+          <div className={`nav-links ${menuOpen ? 'open' : ''}`}>
             {['Home', 'About', 'Projects', 'Experience', 'Contact'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                style={{
-                  marginLeft: '20px',
-                  color: 'white',
-                  textDecoration: 'none',
-                  fontWeight: '500',
-                }}
-                onMouseOver={(e) => (e.target.style.color = '#1abc9c')}
-                onMouseOut={(e) => (e.target.style.color = 'white')}
+                onClick={() => setMenuOpen(false)}
               >
                 {item}
               </a>
             ))}
+
+            {/* Dark mode toggle on desktop, hidden on mobile */}
+            <button
+              onClick={toggleTheme}
+              aria-label="Toggle dark/light mode"
+              className="theme-toggle desktop-right"
+              title={theme === "dark" ? "Switch to Light Mode" : "Switch to Dark Mode"}
+            >
+              {theme === "dark" ? '☀️' : '🌙'}
+            </button>
           </div>
         </nav>
       </header>
 
       <div
-        style={{
-          position: 'fixed',
-          top: '100px',
-          left: 0,
-          height: '4px',
-          width: `${scrollProgress}%`,
-          backgroundColor: '#1abc9c',
-          transition: 'width 0.25s ease-out',
-          zIndex: 1001,
-        }}
+        className="scroll-progress-bar"
+        style={{ width: `${scrollProgress}%` }}
       ></div>
 
       <main style={{ paddingTop: '70px' }}>
@@ -109,25 +116,11 @@ function App() {
         <Footer />
       </main>
 
-
       {showTopBtn && (
         <button
           onClick={scrollToTop}
-          style={{
-            position: 'fixed',
-            bottom: '70px',
-            right: '30px',
-            padding: '12px 16px',
-            fontSize: '20px',
-            borderRadius: '50%',
-            backgroundColor: '#1abc9c',
-            color: 'white',
-            border: 'none',
-            boxShadow: '0 0 15px #1abc9c',
-            cursor: 'pointer',
-            transition: 'opacity 0.4s ease',
-            zIndex: 999,
-          }}
+          className="scroll-to-top-btn"
+          aria-label="Scroll to top"
         >
           ↑
         </button>
@@ -136,4 +129,4 @@ function App() {
   );
 }
 
-export default App
+export default App;

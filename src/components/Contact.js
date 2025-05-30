@@ -13,10 +13,10 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        'service_z5upt9c',   
-        'template_6zg7s3r',  
+        'service_z5upt9c',
+        'template_6zg7s3r',
         form.current,
-        'x8moyuBvUHvc18RcD' 
+        'x8moyuBvUHvc18RcD'
       )
       .then(() => {
         toast.success('Message sent successfully!');
@@ -69,7 +69,7 @@ const Contact = () => {
             <textarea name="message" id="message" rows="5" placeholder="Your message..." required></textarea>
           </div>
 
-          <button type="submit">Send Message</button>
+          <button className='download-btn' type="submit">Send Message</button>
         </form>
       </div>
 

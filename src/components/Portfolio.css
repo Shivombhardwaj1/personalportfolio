@@ -59,4 +59,29 @@ h2 {
     padding: 20px;
     background-color: #111;
     border-top: 1px solid #333;
+}/* App.css or global.css */
+:root {
+  --bg-color: #000000;
+  --text-color: #ffffff;
+  --accent-color: #1abc9c;
+  --card-bg: #111111;
+}
+
+[data-theme='light'] {
+  --bg-color: #ffffff;
+  --text-color: #000000;
+  --accent-color: #006644;
+  --card-bg: #f4f4f4;
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+section {
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }

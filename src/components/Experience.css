@@ -1,41 +1,122 @@
-#experience {
-        margin-top: 60px;
-
-    padding: 60px 20px;
-    background-color: #121212;
-    color: #f0f0f0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+:root {
+  --transition-fast: all 0.3s ease-in-out;
+  --transition-medium: all 0.5s ease;
+  --radius: 1.25rem;
 }
 
-#experience h2 {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: #1abc9c;
+.experience-section {
+  padding: 5rem 1.5rem;
+  transition: var(--transition-medium);
+  font-family: 'Poppins', sans-serif;
 }
 
-.card {
-    background-color: #1a1a1a;
-    border-left: 4px solid #1abc9c;
-    padding: 20px;
-    border-radius: 10px;
-    margin-bottom: 20px;
-    box-shadow: 0 0 15px rgba(26, 188, 156, 0.3);
-    transition: transform 0.3s ease;
-
+.experience-title {
+  text-align: center;
+  font-size: 3rem;
+  letter-spacing: 0.1rem;
+  font-weight: 700;
+  margin-bottom: 4rem;
+  transition: color 0.4s ease-in-out;
 }
 
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 0 25px rgba(26, 188, 156, 0.6);
+.experience-timeline {
+  position: relative;
+  padding-left: 2rem;
+  border-left: 3px solid var(--accent);
+  margin-left: 1rem;
+  transition: border-color 0.4s;
 }
 
-.card h3 {
-    margin-bottom: 5px;
-    color: #ffffff;
+.circle {
+  position: absolute;
+  left: -33px;
+  top: 0.4rem;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--bg);
+  border: 4px solid var(--accent);
+  box-shadow: 0 0 15px var(--accent);
+  z-index: 2;
+  transition: var(--transition-fast);
 }
 
-.card p {
-    color: #ccc;
-    margin: 5px 0;
+.experience-card {
+  background: var(--card-bg);
+  border-radius: var(--radius);
+  padding: 2rem;
+  margin-bottom: 3rem;
+  border: 1px solid var(--card-border);
+  box-shadow: 0 12px 30px -10px var(--card-shadow);
+  max-width: 700px;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.experience-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 40px -12px var(--card-hover-shadow);
+}
+
+.experience-card h3 {
+  margin: 0 0 0.5rem;
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--text-heading);
+}
+
+.experience-card .date {
+  color: var(--text-muted);
+  font-size: 0.95rem;
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.experience-card p {
+  color: var(--text-body);
+  line-height: 1.6;
+  font-size: 1rem;
+  white-space: pre-wrap;
+}
+
+[data-theme="dark"] {
+  --bg: #0f0f0f;
+  --accent: #00ffff;
+  --card-bg: #1a1a1a;
+  --card-border: #333;
+  --card-shadow: rgba(0, 255, 255, 0.1);
+  --card-hover-shadow: rgba(0, 255, 255, 0.35);
+  --text-heading: #ffffff;
+  --text-muted: #888;
+  --text-body: #ccc;
+}
+
+[data-theme="dark"] .experience-section {
+  background-color: var(--bg);
+  color: var(--text-body);
+}
+
+[data-theme="dark"] .experience-title {
+  color: var(--accent);
+}
+
+[data-theme="light"] {
+  --bg: #ffffff;
+  --accent: #007bff;
+  --card-bg: #fdfdfd;
+  --card-border: #ddd;
+  --card-shadow: rgba(0, 123, 255, 0.08);
+  --card-hover-shadow: rgba(0, 123, 255, 0.25);
+  --text-heading: #222;
+  --text-muted: #555;
+  --text-body: #333;
+}
+
+[data-theme="light"] .experience-section {
+  background-color: var(--bg);
+  color: var(--text-body);
+}
+
+[data-theme="light"] .experience-title {
+  color: var(--accent);
 }
